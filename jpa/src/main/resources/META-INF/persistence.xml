@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- jpa 사용 버전 표기 -->
+<!-- <persistence xmlns="http://java.sun.com/xml/ns/persistence" -->
+<!-- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" -->
+<!-- xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" -->
+<!-- version="2.0"> -->
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+						http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="jpastudy">
+		<description>Hibernate EntityManager Demo</description>
+		<class>royleej9.study.jpa.Customer</class>
+		<class>royleej9.study.jpa.Member</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<!-- 표준 속성 - javax.persistence 시작 -->
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:h2:mem:my_database" />
+			<property name="javax.persistence.jdbc.driver"
+				value="org.h2.Driver" />
+			
+			<!-- 옵션 -->
+			<!-- hibernate 전용 속성 -->
+			<!-- db 방언 - db 고유의 기능 사용 -->
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.H2Dialect" />
+
+			<!-- 스키마 자동 생성 -->
+			<!-- create : drop + create / 개발 초기 단계 / 테스트 -->
+			<!-- create-drop : drop + create + drop / 프로그램 종료시 삭제 / 자동화된 테스트 -->
+			<!-- update : 변경 사항만 수정 / 개발 초기 단계 / 테스트 서버 -->
+			<!-- validate : 변경 사항 발생시 경고를 남기고 실행하지 않음 / 테스트 서버 / 스테이징 또는 운영 단계 -->
+			<!-- none: 자동 생성기능을 사용하지 않을 때/유효하지 않은 값 입력시 / 위 4가지 옵션을 제외한 값 / 스테이징 또는 
+				운영 단계 -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!-- sql 출력 -->
+			<property name="hibernate.show_sql" value="true" />
+
+			<!-- sql 정렬 -->
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- 주석 출력 -->
+			<property name="hibernate.use_sql_comments" value="false" />
+
+			<!-- 기본 키 생성 전략 -->
+			<property name="hibernate.id.new_generator_mappings"
+				value="true" />
+
+			<!-- 테이블 컬럼 표시 방법 -->
+			<!-- @Column 속성을 명시적으로 사용하지 않을 때 컬럼 이름 정의 방법 -->
+			<!-- 5.0 아래 버전 -->
+			<!-- <property name="hibernate.ejb.naming_strategy" -->
+			<!-- value="org.hibernate.cfg.ImprovedNamingStrategy" /> -->
+			<!-- 5.0 이상 사용자 정의 클래스 등록 -->
+			<property name="hibernate.physical_naming_strategy"
+				value="royleej9.study.jpa.SnakeCaseNamingStrategy" />
+
+
+		</properties>
+	</persistence-unit>
+
+</persistence>
