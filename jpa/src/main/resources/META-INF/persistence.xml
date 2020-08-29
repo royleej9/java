@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- jpa 사용 버전 표기 -->
+<!-- 2.0 -->
 <!-- <persistence xmlns="http://java.sun.com/xml/ns/persistence" -->
 <!-- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" -->
 <!-- xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" -->
 <!-- version="2.0"> -->
+
+<!-- 2,1 -->
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-						http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+ 						http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
 
 	<persistence-unit name="jpastudy">
 		<description>Hibernate EntityManager Demo</description>
-		<class>royleej9.study.jpa.Customer</class>
-		<class>royleej9.study.jpa.Member</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<!-- true - 엔티티 class 선언 필요 -->
+		<!-- false - 엔티티 class 자동 검색 -->
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<!-- 엔티티 class -->
+		<!-- <class>royleej9.study.jpa.Customer</class> -->
+		<!-- <class>royleej9.study.jpa.Member</class> -->
+
 		<properties>
 			<!-- 표준 속성 - javax.persistence 시작 -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
@@ -24,7 +33,7 @@
 				value="jdbc:h2:mem:my_database" />
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />
-			
+
 			<!-- 옵션 -->
 			<!-- hibernate 전용 속성 -->
 			<!-- db 방언 - db 고유의 기능 사용 -->
@@ -53,7 +62,7 @@
 			<property name="hibernate.id.new_generator_mappings"
 				value="true" />
 
-			<!-- 테이블 컬럼 표시 방법 -->
+			<!-- 테이블 컬럼 표시 방법 대소문자를 _ 로 변경 firstName -> first_name -->
 			<!-- @Column 속성을 명시적으로 사용하지 않을 때 컬럼 이름 정의 방법 -->
 			<!-- 5.0 아래 버전 -->
 			<!-- <property name="hibernate.ejb.naming_strategy" -->
@@ -61,7 +70,6 @@
 			<!-- 5.0 이상 사용자 정의 클래스 등록 -->
 			<property name="hibernate.physical_naming_strategy"
 				value="royleej9.study.jpa.SnakeCaseNamingStrategy" />
-
 
 		</properties>
 	</persistence-unit>

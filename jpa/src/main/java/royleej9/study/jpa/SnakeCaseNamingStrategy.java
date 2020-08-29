@@ -8,8 +8,6 @@ import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 
 public class SnakeCaseNamingStrategy extends PhysicalNamingStrategyStandardImpl {
 
-//	public static final SnakeCaseNamingStrategy INSTANCE = new SnakeCaseNamingStrategy();
-
 	/**
 	 * 
 	 */
