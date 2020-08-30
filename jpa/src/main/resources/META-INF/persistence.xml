@@ -49,13 +49,14 @@
 				운영 단계 -->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 
-			<!-- sql 출력 -->
-			<property name="hibernate.show_sql" value="true" />
+			<!-- sql log 출력 -->
+			<!-- 별도 log lib 사용시 false -->
+			<property name="hibernate.show_sql" value="false" />
 
-			<!-- sql 정렬 -->
+			<!-- sql log 정렬 -->
 			<property name="hibernate.format_sql" value="true" />
 
-			<!-- 주석 출력 -->
+			<!-- 주석 log 출력 -->
 			<property name="hibernate.use_sql_comments" value="false" />
 
 			<!-- 기본 키 생성 전략 -->
@@ -70,6 +71,7 @@
 			<!-- 5.0 이상 사용자 정의 클래스 등록 -->
 			<property name="hibernate.physical_naming_strategy"
 				value="royleej9.study.jpa.SnakeCaseNamingStrategy" />
+
 
 		</properties>
 	</persistence-unit>
