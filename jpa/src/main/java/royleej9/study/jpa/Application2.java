@@ -30,6 +30,8 @@ public class Application2 {
 		member = findUser(entityManagerFactory);
 		if (member != null) {
 			logger.info("findUser-after remove:: {}", member.toString());			
+		} else {
+			logger.info("findUser-after remove:: {}", member);
 		}
 
 		entityManagerFactory.close();
@@ -45,8 +47,14 @@ public class Application2 {
 
 			String id = "id1";
 			// 삭제 대상이 영속성 컨텍스트에 저장되어 있어야함 - 영속 상태
-			Member findMember = entityManager.find(Member.class, id);
-			entityManager.remove(findMember);
+			//Member findMember = entityManager.find(Member.class, id);
+			//entityManager.remove(findMember);
+			
+			Member member = new Member();
+			member.setId(id);
+			// 영속상태로 변경 후 삭제 
+			Member tMember = entityManager.merge(member);
+			entityManager.remove(tMember);
 			
 			entityTransaction.commit();
 		} catch (Exception ex) {
