@@ -66,6 +66,8 @@ public class Application2 {
 		// 1차 캐시에서 먼저 조회 -> 없을 경우 db에서 조회 
 		// 조회된 엔티티는 영속 상태가 된다
 		Member findMember = entityManager.find(Member.class, id);
+
+		// findMember 영속 -> 준영속 상태로 변경
 		entityManager.close();
 
 		return findMember;
@@ -85,14 +87,19 @@ public class Application2 {
 			Member findMember = entityManager.find(Member.class, id);
 			if (findMember != null) {
 				logger.info("findMember:: {}", findMember);
-
-				// 스냅샷 내용과 변경 내용을 비교하여 update sql 생성
-				// 변경 필드가 1개여도 전체 필드에 대한 update sql 생성
-				// update member set age=?, name=? where id=?
-				// hibernate.annotations.DynamicUpdate 어노테이션 사용시 변경 필드만 sql 생성
+				
+				// 변경
 				findMember.setUserName("test2-changed");
 			}
-
+			
+			// 플러시가 호출된다.(동기화 작업)
+			// 스냅샷 내용과 변경 내용을 비교하여 update sql 생성 후 쓰기지연 sql 저장소에 보관
+			// 변경 필드가 1개여도 전체 필드에 대한 update sql 생성
+			// update member set age=?, name=? where id=?
+			// hibernate.annotations.DynamicUpdate 어노테이션 사용시 변경 필드만 sql 생성
+			// 쓰기 지연 sql 저장소에 보관된 sql들을 db에 보낸다. (업데이트/삭제/수정)
+			// find 메소드는 플러시가 호출되지 않는다.
+			// flush 이후 영속화된 엔티티는 그대로 상태 유지됨 - 삭제X
 			entityTransaction.commit();
 		} catch (Exception ex) {
 			// 롤백 -
