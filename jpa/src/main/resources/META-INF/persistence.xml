@@ -54,7 +54,7 @@
 			<property name="hibernate.show_sql" value="false" />
 
 			<!-- sql log 정렬 -->
-<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+			<property name="hibernate.format_sql" value="true" />
 
 			<!-- 주석 log 출력 -->
 			<property name="hibernate.use_sql_comments" value="false" />
