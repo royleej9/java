@@ -6,11 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 // 파마미터가 없는 public/protected 기본 생성자 필수
@@ -31,6 +34,7 @@ public class Member {
 
 	@Id
 	@Column(name = "ID")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 생성 
 	private String id;
 
 	// ddl 생성시 컬럼 제약 조건
@@ -48,8 +52,14 @@ public class Member {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastModifiedDate;
 
+	// db-blob, clob 대응
 	@Lob
 	private String description;
+	
+	// 테이블 매핑에서 제외 
+	@Transient
+	private String test;
+	
 
 	public String getId() {
 		return id;
