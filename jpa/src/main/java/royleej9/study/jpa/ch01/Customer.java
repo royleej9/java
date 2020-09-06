@@ -1,4 +1,4 @@
-package royleej9.study.jpa;
+package royleej9.study.jpa.ch01;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -10,6 +10,8 @@ import javax.persistence.Persistence;
 
 import org.h2.tools.Server;
 
+import royleej9.study.jpa.ch01.Member;
+
 public class Application {
 
 	public static void main(String[] args) throws SQLException {
