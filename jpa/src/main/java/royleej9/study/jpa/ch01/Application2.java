@@ -1,4 +1,4 @@
-package royleej9.study.jpa;
+package royleej9.study.jpa.ch01;
 
 import java.sql.SQLException;
 
@@ -8,8 +8,6 @@ import javax.persistence.Persistence;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.h2.tools.Server;
-
-import royleej9.study.jpa.ch01.UserService;
 
 public class Application2 {
 
