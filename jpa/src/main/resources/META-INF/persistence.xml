@@ -16,15 +16,16 @@
 
 	<persistence-unit name="jpastudy">
 		<description>Hibernate EntityManager Demo</description>
+		<!-- 엔티티 class -->
+<!-- 		<class>royleej9.study.jpa.Customer</class> -->
+<!-- 		<class>royleej9.study.jpa.Member</class> -->
+		<class>royleej9.study.jpa.ch05.Member</class>
+		<class>royleej9.study.jpa.ch05.Team</class>
 
 		<!-- true - 엔티티 class 선언 필요 -->
 		<!-- false - 엔티티 class 자동 검색 -->
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
-
-		<!-- 엔티티 class -->
-		<!-- <class>royleej9.study.jpa.Customer</class> -->
-		<!-- <class>royleej9.study.jpa.Member</class> -->
-
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+				
 		<properties>
 			<!-- 표준 속성 - javax.persistence 시작 -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
