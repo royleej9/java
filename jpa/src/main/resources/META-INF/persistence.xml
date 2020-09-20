@@ -19,8 +19,10 @@
 		<!-- 엔티티 class -->
 <!-- 		<class>royleej9.study.jpa.Customer</class> -->
 <!-- 		<class>royleej9.study.jpa.Member</class> -->
-		<class>royleej9.study.jpa.ch05.Member</class>
-		<class>royleej9.study.jpa.ch05.Team</class>
+<!-- 		<class>royleej9.study.jpa.ch05.Member</clss> -->
+<!-- 		<class>royleej9.study.jpa.ch05.Team</class> -->
+		<class>royleej9.study.jpa.ch06.mto.unidirection.Member</class>
+		<class>royleej9.study.jpa.ch06.mto.unidirection.Team</class>
 
 		<!-- true - 엔티티 class 선언 필요 -->
 		<!-- false - 엔티티 class 자동 검색 -->
@@ -31,7 +33,7 @@
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:my_database" />
+				value="jdbc:h2:mem:test" />
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />
 
@@ -48,7 +50,7 @@
 			<!-- validate : 변경 사항 발생시 경고를 남기고 실행하지 않음 / 테스트 서버 / 스테이징 또는 운영 단계 -->
 			<!-- none: 자동 생성기능을 사용하지 않을 때/유효하지 않은 값 입력시 / 위 4가지 옵션을 제외한 값 / 스테이징 또는 
 				운영 단계 -->
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 
 			<!-- sql log 출력 -->
 			<!-- 별도 log lib 사용시 false -->
